@@ -2,40 +2,33 @@ import { InferGetStaticPropsType } from 'next';
 import { NewsCard } from '@components/NewsCard';
 import LayoutContainer from '@components/LyoutContainer';
 import NavBar from '@components/NavBar';
-
-export type TArticle = {
-  author: string;
-  title: string;
-  description: string;
-  url: string;
-  urlToImage: string;
-  publishedAt: string;
-};
+import type { TArticle } from 'pages/sports';
 
 const url: string =
-  'https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=e900fb8a62c54028bb6ec620da45e821';
+  'https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=e900fb8a62c54028bb6ec620da45e821';
 
-export default function SportsPage({
+export default function BusinessPage({
   articles,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <LayoutContainer>
       <NavBar />
-
+      <div>
+        <h3 className="text-orange-600 text-4xl text-center pt-10 pb-8 font-semibold">
+          Latests technology news
+        </h3>
+      </div>
       <div className="max-w-screen-lg mx-auto">
-        <h1 className="text-4xl font-bold pb-10 mt-6">
-          Welcome to the sports section
-        </h1>
         <ul>
-          {articles.map((article) => (
-            <li>
+          {articles.map((article, i) => (
+            <li key={i}>
               <NewsCard
-                key={article.title}
-                link={article.url}
-                imageLink={article.urlToImage}
+                url={article.url}
+                urlToImage={article.urlToImage}
                 title={article.title}
                 author={article.author}
-                datePosted={article.publishedAt}
+                publishedAt={article.publishedAt}
+                description={article.description}
               />
             </li>
           ))}

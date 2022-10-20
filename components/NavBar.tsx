@@ -16,23 +16,23 @@ const NavBar = () => {
           </Link>
         </div>
         <div className="hidden lg:flex items-center">
-          <Link href="/">
-            <a className="mx-4.5">Blog</a>
+          <Link href="/sports">
+            <a className="mx-2 p-4">Sports</a>
           </Link>
-          <Link href="/">
-            <a className="mx-4.5">Portfolio</a>
+          <Link href="/business">
+            <a className="mx-2 p-4">Business</a>
           </Link>
-          <Link href="/">
-            <a className="mx-4.5">Projects</a>
+          <Link href="/technology">
+            <a className="mx-2 p-4">Technology</a>
           </Link>
         </div>
         <div className="flex justify-end items-center">
           <Link href="/">
-            <a className="hidden lg:inline-block p-4">Get in touch</a>
+            <a className="hidden lg:inline-block p-4">Sign in</a>
           </Link>
           <Link href="/">
-            <a className="py-4 px-6 text-white bg-indigo-700 rounded-full text-sm">
-              Got a gig
+            <a className="py-3 px-5 text-white bg-indigo-700 rounded-lg text-sm">
+              Register
             </a>
           </Link>
           <button className="lg:hidden -mr-5 p-2" onClick={handleToggle}>
@@ -63,39 +63,39 @@ const NavBar = () => {
       <div
         className={`${
           isOpen ? '' : 'hidden'
-        } lg:hidden pt-1 box-border relative w-full h-screen bg-white -z-1 animate-slidein`}
+        } lg:hidden pt-1 box-border animate-slide-down relative w-full h-screen bg-white -z-1 animate-slidein`}
       >
         <div className="text-base font-medium">
-          <Link href="/">
+          <Link href="/sports">
             <a>
               <div className="flex items-center py-5 px-6">
-                <p>Blog</p>
+                <p>Sports</p>
               </div>
             </a>
           </Link>
-          <Link href="/">
+          <Link href="/business">
             <a>
               <div className="flex items-center py-5 px-6">
-                <p>Portfolio</p>
+                <p>Business</p>
               </div>
             </a>
           </Link>
-          <Link href="/">
+          <Link href="/technology">
             <a>
               <div className="flex items-center py-5 px-6">
-                <p>Projects</p>
+                <p>Technology</p>
               </div>
             </a>
           </Link>
           <div className="flex flex-col py-5 px-6">
             <Link href="/">
               <a className="inline-block bg-indigo-700 text-white text-center sm:max-w-xs p-5 rounded border-2 border-indigo-700">
-                Got a gig
+                Sign in
               </a>
             </Link>
             <Link href="/">
               <a className="inline-block bg-white text-indigo-700 text-center sm:max-w-xs mt-2.5 p-5 rounded border-2 border-indigo-700">
-                Get in touch
+                Register
               </a>
             </Link>
           </div>

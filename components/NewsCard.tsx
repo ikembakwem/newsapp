@@ -1,36 +1,36 @@
-import { TArticle } from 'pages/articles';
+import { TArticle } from 'pages/sports';
+import Link from 'next/link';
 
-type newsItem = {
-  link: string;
-  title: string;
-  imageLink: string;
-  author: string;
-  datePosted: string;
-};
-
-export const NewsCard = (props: newsItem) => {
+export const NewsCard = (props: TArticle) => {
   return (
-    <article className="flex flex-wrap justify-between p-6 border-2 border-t border-line">
-      <header className="basis-two-third pb-6">
-        <h2 className="mb-6 text-post-title font-semibold">
-          <a href={props.link}>{props.title}</a>
-        </h2>
-        <div>
-          <div className="text-smx pb-6">
-            <span className="font-bold">{props.author}</span>
+    <Link href={props.url}>
+      <a className="hover:opacity-60">
+        <article className="flex justify-between items-start border-2 border-t border-line mx-6 py-5">
+          <header className="basis-2/3 md:basis-1/3 pr-2">
+            <h2 className="mb-6 text-xlm font-semibold">
+              <a href={props.url}>{props.title}</a>
+            </h2>
             <div>
-              <span className="font-extralight">{props.datePosted}</span>
+              <div className="text-smx">
+                <span className="font-bold">{props.author}</span>
+                <div>
+                  <span className="font-extralight">{props.publishedAt}</span>
+                </div>
+              </div>
             </div>
+          </header>
+          <div className="basis-1/3 px-4 hidden md:block">
+            <p>{props.description}</p>
           </div>
-        </div>
-      </header>
-      <footer className="relative basis-one-third overflow-hidden rounded-lg">
-        <img
-          className="h-full w-full"
-          src={props.imageLink}
-          alt="Newscard image"
-        />
-      </footer>
-    </article>
+          <footer className="block basis-1/3 md:basis-1/3 overflow-hidden rounded-lg object-center">
+            <img
+              className="w-full"
+              src={props.urlToImage}
+              alt="Newscard image"
+            />
+          </footer>
+        </article>
+      </a>
+    </Link>
   );
 };
