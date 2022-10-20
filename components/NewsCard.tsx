@@ -10,13 +10,13 @@ type newsItem = {
 
 export const NewsCard = (props: newsItem) => {
   return (
-    <article className="flex flex-wrap justify-between py-6 border-2 border-t border-line">
-      <header className="basis-two-third">
+    <article className="flex flex-wrap justify-between p-6 border-2 border-t border-line">
+      <header className="basis-two-third pb-6">
         <h2 className="mb-6 text-post-title font-semibold">
           <a href={props.link}>{props.title}</a>
         </h2>
         <div>
-          <div className="text-smx">
+          <div className="text-smx pb-6">
             <span className="font-bold">{props.author}</span>
             <div>
               <span className="font-extralight">{props.datePosted}</span>
@@ -26,7 +26,7 @@ export const NewsCard = (props: newsItem) => {
       </header>
       <footer className="relative basis-one-third overflow-hidden rounded-lg">
         <img
-          className="absolute top-0 left-0 right-0 bottom-0 object-center"
+          className="h-full w-full"
           src={props.imageLink}
           alt="Newscard image"
         />

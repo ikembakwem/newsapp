@@ -1,5 +1,7 @@
 import { InferGetStaticPropsType } from 'next';
 import { NewsCard } from '@components/NewsCard';
+import LayoutContainer from '@components/LyoutContainer';
+import NavBar from '@components/NavBar';
 
 export type TArticle = {
   author: string;
@@ -16,28 +18,30 @@ const url: string =
 export default function SportsPage({
   articles,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  console.log({ articles });
-
   return (
-    <div className="max-w-screen-lg mx-auto">
-      <h1 className="text-4xl font-bold pb-10">
-        Welcome to the sports section
-      </h1>
-      <ul>
-        {articles.map((article) => (
-          <li>
-            <NewsCard
-              key={article.title}
-              link={article.url}
-              imageLink={article.urlToImage}
-              title={article.title}
-              author={article.author}
-              datePosted={article.publishedAt}
-            />
-          </li>
-        ))}
-      </ul>
-    </div>
+    <LayoutContainer>
+      <NavBar />
+
+      <div className="max-w-screen-lg mx-auto">
+        <h1 className="text-4xl font-bold pb-10 mt-6">
+          Welcome to the sports section
+        </h1>
+        <ul>
+          {articles.map((article) => (
+            <li>
+              <NewsCard
+                key={article.title}
+                link={article.url}
+                imageLink={article.urlToImage}
+                title={article.title}
+                author={article.author}
+                datePosted={article.publishedAt}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </LayoutContainer>
   );
 }
 
