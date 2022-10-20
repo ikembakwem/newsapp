@@ -2,6 +2,7 @@ import { InferGetStaticPropsType } from 'next';
 import { NewsCard } from '@components/NewsCard';
 import LayoutContainer from '@components/LyoutContainer';
 import NavBar from '@components/NavBar';
+import Head from 'next/head';
 
 export type TArticle = {
   author: string;
@@ -12,6 +13,7 @@ export type TArticle = {
   publishedAt: string;
 };
 
+const pageTitle: string = 'Sports News';
 const url: string =
   'https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=e900fb8a62c54028bb6ec620da45e821';
 
@@ -22,8 +24,11 @@ export default function SportsPage({
     <LayoutContainer>
       <NavBar />
       <div>
+        <Head>
+          <title>{pageTitle}</title>
+        </Head>
         <h3 className="text-red-600 text-4xl text-center pt-10 pb-8 font-semibold">
-          Latests sports news
+          Latest {pageTitle}
         </h3>
       </div>
       <div className="max-w-screen-lg mx-auto">

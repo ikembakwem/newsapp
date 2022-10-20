@@ -3,7 +3,9 @@ import { NewsCard } from '@components/NewsCard';
 import LayoutContainer from '@components/LyoutContainer';
 import NavBar from '@components/NavBar';
 import type { TArticle } from 'pages/sports';
+import Head from 'next/head';
 
+const pageTitle: string = 'Business News';
 const url: string =
   'https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=e900fb8a62c54028bb6ec620da45e821';
 
@@ -13,9 +15,12 @@ export default function BusinessPage({
   return (
     <LayoutContainer>
       <NavBar />
+      <Head>
+        <title>{pageTitle}</title>
+      </Head>
       <div>
         <h3 className="text-green-600 text-4xl text-center pt-10 pb-8 font-semibold">
-          Latests business news
+          Latest {pageTitle}
         </h3>
       </div>
       <div className="max-w-screen-lg mx-auto">
