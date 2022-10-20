@@ -1,0 +1,55 @@
+import { InferGetStaticPropsType } from 'next';
+import { NewsCard } from '@components/NewsCard';
+
+export type TArticle = {
+  author: string;
+  title: string;
+  description: string;
+  url: string;
+  urlToImage: string;
+  publishedAt: string;
+};
+
+const url: string =
+  'https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=e900fb8a62c54028bb6ec620da45e821';
+
+export default function SportsPage({
+  articles,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  console.log({ articles });
+
+  return (
+    <div className="max-w-screen-lg mx-auto">
+      <h1 className="text-4xl font-bold pb-10">
+        Welcome to the sports section
+      </h1>
+      <ul>
+        {articles.map((article) => (
+          <li>
+            <NewsCard
+              key={article.title}
+              link={article.url}
+              imageLink={article.urlToImage}
+              title={article.title}
+              author={article.author}
+              datePosted={article.publishedAt}
+            />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export const getStaticProps = async () => {
+  const res = await fetch(url);
+
+  const result = await res.json();
+  const articles: TArticle[] = result.articles;
+
+  return {
+    props: {
+      articles,
+    },
+  };
+};
