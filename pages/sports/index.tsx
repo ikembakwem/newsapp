@@ -1,4 +1,4 @@
-import { InferGetStaticPropsType } from 'next';
+import { InferGetServerSidePropsType } from 'next';
 import { NewsCard } from '@components/NewsCard';
 import LayoutContainer from '@components/LyoutContainer';
 import NavBar from '@components/NavBar';
@@ -19,7 +19,7 @@ const url: string =
 
 export default function SportsPage({
   articles,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <LayoutContainer>
       <NavBar />
@@ -51,7 +51,7 @@ export default function SportsPage({
   );
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const res = await fetch(url);
 
   const result = await res.json();
