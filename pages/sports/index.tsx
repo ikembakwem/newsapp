@@ -1,52 +1,21 @@
-import { InferGetServerSidePropsType } from 'next';
-import { NewsCard } from '@components/NewsCard';
 import LayoutContainer from '@components/LyoutContainer';
 import NavBar from '@components/NavBar';
-import Head from 'next/head';
+import { NewsList } from '@components/NewsList';
+import { PageTitle } from '@components/PageTitle';
+import { InferGetServerSidePropsType } from 'next';
+import { NewsData } from 'types/NewsData';
 
-export type TArticle = {
-  author: string;
-  title: string;
-  description: string;
-  url: string;
-  urlToImage: string;
-  publishedAt: string;
-};
+const title: string = 'sports';
+const url: string = `https://newsapi.org/v2/top-headlines?country=us&category=${title}&apiKey=e900fb8a62c54028bb6ec620da45e821`;
 
-const pageTitle: string = 'Sports News';
-const url: string =
-  'https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=e900fb8a62c54028bb6ec620da45e821';
-
-export default function SportsPage({
-  articles,
+export default function Home({
+  data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <LayoutContainer>
       <NavBar />
-      <div>
-        <Head>
-          <title>{pageTitle}</title>
-        </Head>
-        <h3 className="text-red-600 text-4xl text-center pt-10 pb-8 font-semibold">
-          Latest {pageTitle}
-        </h3>
-      </div>
-      <div className="max-w-screen-lg mx-auto">
-        <ul>
-          {articles.map((article, i) => (
-            <li key={i}>
-              <NewsCard
-                url={article.url}
-                urlToImage={article.urlToImage}
-                title={article.title}
-                author={article.author}
-                publishedAt={article.publishedAt}
-                description={article.description}
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
+      <PageTitle>Latest {title} News</PageTitle>
+      <NewsList data={data} />
     </LayoutContainer>
   );
 }
@@ -54,12 +23,12 @@ export default function SportsPage({
 export const getServerSideProps = async () => {
   const res = await fetch(url);
 
-  const result = await res.json();
-  const articles: TArticle[] = result.articles;
+  const { articles } = await res.json();
+  const data: NewsData[] = articles;
 
   return {
     props: {
-      articles,
+      data,
     },
   };
 };

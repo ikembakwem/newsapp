@@ -17,6 +17,7 @@ module.exports = {
         'post-title': ['1.625rem', { lineHeight: '1.2' }],
         smx: ['.8125rem', { lineHeight: '1.23' }],
         xlm: ['1.375rem', { lineHeight: '1.09' }],
+        xl: ['1.25rem', { lineHeight: '1.09' }],
       },
       flexBasis: {
         'one-third': '29%',
