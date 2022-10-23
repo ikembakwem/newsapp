@@ -14,7 +14,7 @@ export default function Home({
   return (
     <LayoutContainer>
       <NavBar />
-      <PageTitle>Latest {title} News</PageTitle>
+      <PageTitle title={title}>Latest {title} News</PageTitle>
       <NewsList data={data} />
     </LayoutContainer>
   );
