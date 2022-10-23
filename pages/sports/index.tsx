@@ -1,7 +1,7 @@
 import LayoutContainer from '@components/LyoutContainer';
 import NavBar from '@components/NavBar';
-import { NewsList } from '@components/NewsList';
-import { PageTitle } from '@components/PageTitle';
+import { NewsList } from '../../components/NewsList';
+import { PageTitle } from '../../components/PageTitle';
 import { InferGetServerSidePropsType } from 'next';
 import { NewsData } from 'types/NewsData';
 
