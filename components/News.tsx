@@ -6,9 +6,6 @@ interface Props {
 }
 
 export const News = ({ data }: Props) => {
-  const formattedDate = `${new Date(
-    data.publishedAt
-  ).toLocaleTimeString()} ${new Date(data.publishedAt).toLocaleDateString()}`;
   return (
     <Link href={data.url}>
       <a className="hover:opacity-60 active:opacity-30">
@@ -21,7 +18,11 @@ export const News = ({ data }: Props) => {
               <div className="text-smx">
                 <span className="font-bold">{data.author}</span>
                 <div>
-                  <span>{formattedDate}</span>
+                  <span>{`${new Date(
+                    data.publishedAt
+                  ).toLocaleTimeString()} ${new Date(
+                    data.publishedAt
+                  ).toLocaleDateString()}`}</span>
                 </div>
               </div>
             </div>
